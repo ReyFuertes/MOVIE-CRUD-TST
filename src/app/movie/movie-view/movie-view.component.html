@@ -1,0 +1,49 @@
+<div *ngIf="(getMovies | async) as movies">
+  <div class="header">
+    <div class="movie-kind">
+      <div (click)="selectedKind = 0" [ngClass]="{'is-selected': selectedKind === 0}">Movies ({{ moviesCount }})</div>
+      <div (click)="selectedKind = 1" [ngClass]="{'is-selected': selectedKind === 1}">Wached List ({{ watchlistCount }})</div>
+    </div>
+    <div class="sort">
+      <div *ngIf="selectedKind === 0" class="card flex justify-content-center">
+        <p-dropdown (onChange)="onSelectSortTitles($event)" [(ngModel)]="selectedSortTitle" [options]="sortDirectionTitles" optionLabel="label" placeholder="Select Title"></p-dropdown>
+        <p-dropdown (onChange)="onSelectSortDate($event)" [(ngModel)]="selectedSortDate" [options]="sortDirectionDates" optionLabel="label" placeholder="Select Date"></p-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="selectedKind === 0" class="movie-list">
+      <ng-container *ngIf="moviesCount > 0; else noRecordFound">
+        <div *ngFor="let item of movies" class="item" (click)="gotoDetails(item)" title="Click to go details">
+          <div>
+            <img [src]="imgPath + item?.image" />
+          </div>
+          <div class="details">
+            <div class="title">{{ item?.title }}</div>
+            <div class="description">{{ item?.description }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div *ngIf="selectedKind === 1" class="movie-list">
+      <ng-container *ngIf="watchlistCount > 0; else noRecordFound">
+        <div *ngFor="let item of myWatchList" class="item" (click)="gotoDetails(item)">
+          <div>
+            <img [src]="imgPath + item?.image" />
+          </div>
+          <div class="details">
+            <div class="title">{{ item?.title }}</div>
+            <div class="description">{{ item?.description }}</div>
+            <div>
+              <p-button label="Remove from watchlist" (click)="removeFromWatchList(item)"></p-button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+</div>
+<ng-template #noRecordFound>
+  <h1>No record found..</h1>
+</ng-template>

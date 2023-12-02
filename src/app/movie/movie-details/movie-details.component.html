@@ -1,0 +1,28 @@
+<div class="header">
+  <div>
+    <h2>Details</h2>
+  </div>
+  <div class="navigation">
+    <p-button label="Back" (click)="onBack()" severity="secondary"></p-button>
+  </div>
+</div>
+<div *ngIf="item" class="item">
+  <div>
+    <img [src]="imgPath + item.image" />
+  </div>
+  <div class="details">
+    <div class="title">{{ item.title }}</div>
+    <div class="description">{{ item.description }}</div>
+    <div class="rating">Rating: {{ item.rating }}</div>
+    <div class="duration">Duration: {{ item.duration }}</div>
+    <div class="genre">Genre: {{ item.genre }}</div>
+    <div class="releasedDate">Released Date: {{ item.releasedDate }}</div>
+    <div class="trailerLink">Trailer Link: <a [href]="item.trailerLink">{{ item.trailerLink }}</a></div>
+    <div>
+      <p-button *ngIf="onWatchList(item) === false; else notOnWatchList" label="Add to watchlist" (click)="addToWatchList(item)"></p-button>
+    </div>
+  </div>
+</div>
+<ng-template #notOnWatchList>
+  <div class="watch-list">On my watchlist</div>
+</ng-template>

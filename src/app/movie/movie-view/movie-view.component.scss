@@ -1,0 +1,126 @@
+:host {
+  width: 100%;
+}
+
+.movie-kind {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  div {
+    font-size: 1.5em;
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 0.5em;
+    }
+  }
+
+  .is-selected {
+    background-color: #3B82F6;
+    border-radius: 0.2em;
+    padding: 0.2em;
+    border: thin #3B82F6 solid;
+    color: #fff;
+  }
+}
+
+img {
+  width: 7em;
+  height: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.5em;
+  
+  > div {
+    &:first-child {
+      width: 30%;
+    }
+    &:last-child {
+      width: 70%;
+    }
+  }
+
+  .sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    > div {
+      margin-right: 1em;
+      font-size: 0.9em;
+      cursor: pointer;
+      font-weight: 500;
+    }
+  }
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+    font-size: 1em;
+    border: thin solid #cccccc;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.3em;
+
+    .details {
+      display: flex;
+      flex-direction: column;
+
+      > div {
+        &:not(:first-child) {
+          padding: 0.3em 1em;
+          font-size: 0.9em;
+        }
+  
+        &:last-child {
+          padding-bottom: 1em;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+
+    .title {
+      font-weight: 500;
+      padding: 1em 1em 0.3em 0.5em;
+      font-size: 1.5em;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+}
+
+p-dropdown:not(:last-child) {
+  margin-right: 5px;
+}
+
+.header .sort > div {
+  margin-right: 0;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-label {
+  width: 11em;
+}
+
+p-button {
+  min-width: 11em;
+}

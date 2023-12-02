@@ -1,0 +1,77 @@
+:host {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.5em;
+
+  h2 {
+    margin: 0;
+  }
+  
+  > div {
+    &:first-child {
+      width: 30%;
+    }
+    &:last-child {
+      width: 70%;
+    }
+  }
+}
+
+img {
+  width: 12em;
+  height: auto;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5em;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+  font-size: 1em;
+  border: thin solid #cccccc;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.3em;
+
+  .details {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      &:not(:first-child) {
+        padding: 0.3em 1em;
+        font-size: 0.9em;
+      }
+
+      &:last-child {
+        padding-bottom: 1em;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+
+  .title {
+    font-weight: 500;
+    padding: 1em 1em 0.5em;
+  }
+}
+
+.watch-list {
+  background-color: #efd0ff;
+  border-radius: 0.3em;
+  width: fit-content;
+  padding: 0.3em;
+}
